@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhaqsaspblylm"]
+
+[ext_resource type="Script" uid="uid://bd76y5jbcnxad" path="res://demo/button_3.gd" id="1_d4lqv"]
+
+[node name="Button3" type="Button"]
+text = "Click me, three!"
+script = ExtResource("1_d4lqv")

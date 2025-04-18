@@ -12,13 +12,13 @@ config_version=5
 
 config/name="gg_print"
 config/description="gg.print() logs clickable messages to the output panel. Click to get to the source."
-run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+run/main_scene="res://demo/main.tscn"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-gg="*res://addons/gg_print/gg.tscn"
+gg="*res://addons/gg_print/gg_print.tscn"
 
 [editor_plugins]
 

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv7snvsmv32gb"]
-
-[ext_resource type="Script" path="res://addons/gg_print/meta_listener.gd" id="1_l47ch"]
-
-[node name="MetaListener" type="Node"]
-script = ExtResource("1_l47ch")

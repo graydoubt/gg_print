@@ -1,5 +1,5 @@
 @tool
-extends Node
+class_name GGOutputPanelListener extends Node
 
 ## Listens to [signal RichTextLabel.meta_clicked] to open "gg.print()" links.
 ##
@@ -30,3 +30,4 @@ func _on_meta_clicked(meta: String):
 		# Could probably use some validation to ensure the [Script] resource
 		# could actually be loaded.
 		EditorInterface.edit_script(load(stack["source"]), stack["line"])
+		EditorInterface.set_main_screen_editor("Script")

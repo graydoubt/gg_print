@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv7snvsmv32gb"]
+
+[ext_resource type="Script" uid="uid://bi33oyked2yr0" path="res://addons/gg_print/output_panel_listener.gd" id="1_l47ch"]
+
+[node name="OutputPanelListener" type="Node"]
+script = ExtResource("1_l47ch")

@@ -1,6 +1,6 @@
-extends CanvasLayer
+class_name Main extends CanvasLayer
 
-## Brief demo showing links back to the editor.
+## Brief demo to show how [method gg.print] links back to the editor.
 ## 
 ## For this demo to work, the "gg_print" plugin must be enabled from the ProjectSettings.
 
@@ -19,6 +19,7 @@ extends CanvasLayer
 
 func _on_button1_pressed():
 	gg.print("Button 1 was pressed!")
+
 
 func _on_button2_pressed():
 	gg.print("Button 2 was pressed!")
