@@ -10,7 +10,7 @@ class_name GGOutputPanelListener extends Node
 var _editor_log: RichTextLabel
 
 
-func _ready():
+func _ready() -> void:
 	var parent: Node = get_parent()
 	if parent is RichTextLabel:
 		_editor_log = parent
@@ -19,7 +19,7 @@ func _ready():
 
 ## Runs when a link is clicked in the RichTextLabel.
 ## The "link" is expected to be a [JSON] encoded [method @GDScript.get_stack] entry
-func _on_meta_clicked(meta: String):
+func _on_meta_clicked(meta: String) -> void:
 	var json := JSON.new()
 	var error: int = json.parse(meta)
 	if not error:

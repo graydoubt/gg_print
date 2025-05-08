@@ -17,9 +17,9 @@ class_name Main extends CanvasLayer
 @export var button3: Button
 
 
-func _on_button1_pressed():
+func _on_button1_pressed() -> void:
 	gg.print("Button 1 was pressed!")
 
 
-func _on_button2_pressed():
+func _on_button2_pressed() -> void:
 	gg.print("Button 2 was pressed!")

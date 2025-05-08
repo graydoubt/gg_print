@@ -22,7 +22,7 @@ var _output_panel: RichTextLabel
 var output_panel_listener: GGOutputPanelListener
 
 
-func _enter_tree():
+func _enter_tree() -> void:
 	_output_panel = _find_output_panel()
 	if _output_panel:
 		#print("Found output panel at %s" % [_output_panel.get_path()])
@@ -30,18 +30,18 @@ func _enter_tree():
 		_output_panel.add_child(output_panel_listener)
 
 
-func _exit_tree():
+func _exit_tree() -> void:
 	if _output_panel.get_children().has(output_panel_listener):
 		_output_panel.remove_child(output_panel_listener)
 		output_panel_listener.free()
 
 
-func _enable_plugin():
+func _enable_plugin() -> void:
 	add_autoload_singleton(AUTOLOAD_NAME, AUTOLOAD_SCENE)
 	print("gg.print() editor integration enabled")
 
 
-func _disable_plugin():
+func _disable_plugin() -> void:
 	remove_autoload_singleton(AUTOLOAD_NAME)
 	print("gg.print() editor integration disabled")
 
