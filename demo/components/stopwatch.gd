@@ -7,11 +7,11 @@ class_name MyStopWatch extends RefCounted
 var start_time: int
 
 
-## Creates a stopwatch and starts it automatically, unless [param start] is
+## Creates a stopwatch and starts it automatically, unless [param auto_start] is
 ## set to [code]false[/code].
-static func create(start: bool = true) -> MyStopWatch:
+static func create(auto_start: bool = true) -> MyStopWatch:
 	var instance := MyStopWatch.new()
-	if start:
+	if auto_start:
 		instance.start()
 	return instance
 
@@ -28,6 +28,7 @@ func time(message: String, reset: bool = false) -> void:
 	var duration = stop_time - start_time
 	if reset:
 		start_time = stop_time
+	# Calling gg.print() with stack_depth 2, so it'll print where time() was invoked from.
 	gg.print("(%d msec) %s" % [duration, message], 2)
 
 
@@ -36,4 +37,5 @@ func stop(message: String) -> void:
 	var stop_time = Time.get_ticks_msec()
 	var duration = stop_time - start_time
 	start_time = stop_time
+	# Calling gg.print() with stack_depth 2, so it'll print where stop() was invoked from.
 	gg.print("(%d msec) %s" % [duration, message], 2)

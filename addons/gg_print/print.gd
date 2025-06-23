@@ -1,7 +1,6 @@
 class_name GGPrint extends Node
 
-## Provide debug printing with a link back to the source.
-## @experimental
+## Prints text in the editor's output panel with a clickable link back to the source script.
 ##
 ## This class provides a [method print] method. It accepts a string that will be logged to the
 ## output panel via [method @GlobalScope.print_rich].
@@ -19,7 +18,9 @@ class_name GGPrint extends Node
 
 ## Prints the [param text] string to the output panel and makes it clickable to easily
 ## find where it was printed from.
-func print(text: Variant, stack_depth: int = 1) -> void:
+## If [param stack_depth] is provided, it'll link back to the respective source
+## (see [method @GDScript.get_stack]).
+func print(text: Variant = "", stack_depth: int = 1) -> void:
 	## If the game isn't running via the editor, print nothing.
 	if not OS.has_feature("editor"):
 		return

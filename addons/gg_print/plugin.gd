@@ -2,7 +2,6 @@
 extends EditorPlugin
 
 ## gg.print() plugin
-## @experimental
 ##
 ## Once loaded, "gg.print()" can be used to log clickable output that will take you to the source code in the editor.
 ##
@@ -12,7 +11,7 @@ extends EditorPlugin
 ## The "namespace" that "print" will be available under
 const AUTOLOAD_NAME = "gg"
 
-const AUTOLOAD_SCENE = "res://addons/gg_print/gg_print.tscn"
+const AUTOLOAD_SCENE = "res://addons/gg_print/print.tscn"
 
 ## This listener will get attached to the Editor's log output
 const OUTPUT_PANEL_LISTENER = "res://addons/gg_print/output_panel_listener.tscn"
