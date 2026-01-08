@@ -15,8 +15,7 @@ When printing to the Godot editor's output panel, it includes a clickable link b
 
 ## Requirements
 
-This plugin was created with Godot Engine 4.4. You can probably make it work with Godot 4.2 and perhaps even earlier versions.
-The plugin doesn't really use any fancy resources or new GDScript syntax like typed Dictionaries.
+This plugin requires Godot Engine 4.5 due to the use of [variadic functions](https://docs.godotengine.org/en/latest/tutorials/scripting/gdscript/gdscript_basics.html#variadic-functions).
 
 
 ## Installation

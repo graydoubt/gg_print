@@ -16,11 +16,20 @@ class_name GGPrint extends Node
 ## caller, increase the [param stack_depth] to [code]2[/code] when calling [method print].
 
 
-## Prints the [param text] string to the output panel and makes it clickable to easily
+## A drop-in replacement for the regular [method @GlobalScope.print] statement.
+## Prints the [param params] to the output panel and makes it clickable to easily
 ## find where it was printed from.
+func print(...params: Array) -> void:
+	print_depth(", ".join(params), 2)
+
+
+## Prints the [param text].
 ## If [param stack_depth] is provided, it'll link back to the respective source
 ## (see [method @GDScript.get_stack]).
-func print(text: Variant = "", stack_depth: int = 1) -> void:
+## [br][br]
+## [b]Note:[/b] This method is intended for custom components that need to
+## specify the [param stack_depth].
+func print_depth(text: Variant = "", stack_depth: int = 1) -> void:
 	## If the game isn't running via the editor, print nothing.
 	if not OS.has_feature("editor"):
 		return
@@ -28,15 +37,19 @@ func print(text: Variant = "", stack_depth: int = 1) -> void:
 	text = str(text)
 
 	var stack: Array[Dictionary] = get_stack()
-	# stack[0] is us, the invocation of gg.print() is stack[1]
-
+	# stack[0] is where get_stack() was called from, right here.
+	# stack[1] is where print_depth() was called from.
+	# stack[2] is where print() was called from (if print() was called).
 	if stack.size() <= stack_depth:
 		push_error("Invalid stack_depth.")
 		return
 
+	var link_data: Dictionary = stack[stack_depth].duplicate()
+	link_data.erase("function")
+
 	print_rich("[[url=%s]%s:%d[/url]]: %s" % [
-		JSON.stringify(stack[stack_depth]),
-		String(stack[stack_depth]["source"]).get_file(),
-		stack[stack_depth]["line"],
+		JSON.stringify(link_data),
+		String(link_data["source"]).get_file(),
+		link_data["line"],
 		text
 	])

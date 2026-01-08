@@ -22,12 +22,16 @@ func _ready() -> void:
 func _on_meta_clicked(meta: String) -> void:
 	var json := JSON.new()
 	var error: int = json.parse(meta)
-	if not error:
-		# The stack entry
-		var stack: Dictionary = json.data
-		
-		# This is how you open a script for editing in the editor.
-		# Could probably use some validation to ensure the [Script] resource
-		# could actually be loaded.
-		EditorInterface.edit_script(load(stack["source"]), stack["line"])
-		EditorInterface.set_main_screen_editor("Script")
+	if error:
+		return
+
+	var stack: Dictionary = json.data
+	if not stack.has("source") or not stack.has("line"):
+		return
+	
+	if not FileAccess.file_exists(stack["source"]):
+		printerr("File %s does not exist." % [stack["source"]])
+		return
+	
+	EditorInterface.edit_script(load(stack["source"]), stack["line"])
+	EditorInterface.set_main_screen_editor("Script")

@@ -29,7 +29,7 @@ func time(message: String, reset: bool = false) -> void:
 	if reset:
 		start_time = stop_time
 	# Calling gg.print() with stack_depth 2, so it'll print where time() was invoked from.
-	gg.print("(%d msec) %s" % [duration, message], 2)
+	gg.print_depth("(%d msec) %s" % [duration, message], 2)
 
 
 ## Stops the timer and prints how much time has passed along with the [param message].
@@ -38,4 +38,4 @@ func stop(message: String) -> void:
 	var duration = stop_time - start_time
 	start_time = stop_time
 	# Calling gg.print() with stack_depth 2, so it'll print where stop() was invoked from.
-	gg.print("(%d msec) %s" % [duration, message], 2)
+	gg.print_depth("(%d msec) %s" % [duration, message], 2)
